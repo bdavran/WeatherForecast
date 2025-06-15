@@ -1,0 +1,44 @@
+﻿@model WeatherForecast.Data.WeatherViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Weather Forecast";
+    var cities = ViewBag.Cities as List<SelectListItem>;
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Weather Forecast</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item">Weather</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Index" method="get" class="form-inline mb-3">
+    <select name="city" class="form-control mr-2">
+        @foreach (var item in cities)
+        {
+            <option value="@item.Value" selected="@item.Selected">@item.Text</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Ara</button>
+</form>
+
+<h2>Hava Durumu - @Model.City</h2>
+
+<ul>
+    <li><strong>Durum:</strong> @Model.Main - @Model.Description</li>
+    <li><strong>Sıcaklık:</strong> @Model.Temperature °C</li>
+    <li><strong>Hissedilen:</strong> @Model.FeelsLike °C</li>
+    <li><strong>Nem:</strong> @Model.Humidity%</li>
+    <li><strong>Basınç:</strong> @Model.Pressure hPa</li>
+    <li><strong>Rüzgar Hızı:</strong> @Model.WindSpeed m/s</li>
+</ul>
