@@ -33,7 +33,7 @@ namespace WeatherForecast.Data.DbInitializer
                 throw;
             }
 
-            /*if (!_context.Users.Any(u => u.UserRole == "Admin"))
+            if (!_context.Users.Any(u => u.UserRole == "Admin"))
             {
                 var adminUser = new User
                 {
@@ -47,7 +47,7 @@ namespace WeatherForecast.Data.DbInitializer
 
                 _context.Users.Add(adminUser);
                 _context.SaveChanges();
-            }*/
+            }
 
             /*if (!_context.Cities.Any())
             {
