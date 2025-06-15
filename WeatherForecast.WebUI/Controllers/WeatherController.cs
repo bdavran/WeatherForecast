@@ -15,7 +15,7 @@ public class WeatherController : Controller
         if (string.IsNullOrEmpty(city))
         {
             var identity = (ClaimsIdentity)User.Identity;
-            city = identity.FindFirst("City")?.Value ?? "Istanbul";
+            city = identity.FindFirst("City")?.Value;
         }
 
         WeatherViewModel weather = await GetWeatherDataAsync(city);
@@ -48,7 +48,9 @@ public class WeatherController : Controller
             FeelsLike = json.main.feels_like,
             Pressure = json.main.pressure,
             Humidity = json.main.humidity,
-            WindSpeed = json.wind.speed
+            WindSpeed = json.wind.speed,
+            Latitude = json.coord.lat,
+            Longitude = json.coord.lon
         };
     }
 }

@@ -16,5 +16,9 @@ namespace WeatherForecast.Data
         public int Pressure { get; set; }
         public int Humidity { get; set; }
         public double WindSpeed { get; set; }
+
+        // Google Maps için eklendi:
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

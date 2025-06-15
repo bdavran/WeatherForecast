@@ -42,3 +42,30 @@
     <li><strong>Basınç:</strong> @Model.Pressure hPa</li>
     <li><strong>Rüzgar Hızı:</strong> @Model.WindSpeed m/s</li>
 </ul>
+
+
+<h3>Konum Haritası</h3>
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+@section Scripts {
+    <script>
+        function initMap() {
+            var cityLocation = { lat: @Model.Latitude, lng: @Model.Longitude };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: cityLocation
+            });
+
+            var marker = new google.maps.Marker({
+                position: cityLocation,
+                map: map,
+                title: '@Model.City'
+            });
+        }
+    </script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap">
+    </script>
+}

@@ -49,6 +49,7 @@ namespace WeatherForecast.Controllers
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.Role, _user.UserRole));
                 identity.AddClaim(new Claim(ClaimTypes.Email, _user.UserEmail));
+                identity.AddClaim(new Claim("City", _user.City));
                 HttpContext.Session.SetString("UserEmail", _user.UserEmail);
                 HttpContext.Session.SetInt32("UserId", _user.UserId);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));

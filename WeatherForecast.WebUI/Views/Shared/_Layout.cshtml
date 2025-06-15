@@ -53,8 +53,8 @@
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-light-secondary elevation-4" style="background-color:#E1EBEE !important;">
                 <!-- Brand Logo -->
-                <a href="/Document/Index" class="brand-link">
-                    <img src="https://icons.iconarchive.com/icons/treetog/i/256/Documents-icon.png" style="height:50px;width:50px;" />
+                <a href="~/Weather/Index" class="brand-link">
+                    <img src="https://icons.iconarchive.com/icons/onkz-creative/winter-flat/256/Mountain-icon.png" style="height:50px;width:50px;" />
 
                     <span class="brand-text font-weight-light">Forecast</span>
                 </a>
@@ -71,7 +71,7 @@
                             <a href="#" class="d-block">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <p> @User.Identity.Name</p>
+                                    <p> @User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</p>
                                 }
                             </a>
                         </div>
@@ -80,19 +80,19 @@
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item has-treeview">
+                                    <a href="#" class="nav-link">
+                                        <img src="https://icons.iconarchive.com/icons/hamzasaleem/stock-apps-style-2-part-2/256/Settings-icon.png" style="height:40px;width:40px;" />
+                                        <p>
+                                            Configuration Section
+                                            <i class="right fa fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
 
-                            <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <img src="https://icons.iconarchive.com/icons/hamzasaleem/stock-apps-style-2-part-2/256/Settings-icon.png" style="height:40px;width:40px;" />
-                                    <p>
-                                        Configuration Section
-                                        <i class="right fa fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
 
-                                    @if (User.IsInRole("Admin"))
-                                    {
 
                                         <li class="nav-item">
                                             <a href="/User/Create" class="nav-link">
@@ -106,11 +106,11 @@
                                                 <p>Manage Users</p>
                                             </a>
                                         </li>
-                                    }
 
-                                </ul>
-                            </li>
 
+                                    </ul>
+                                </li>
+                            }
                             <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                     <img src="https://icons.iconarchive.com/icons/treetog/junior/256/folder-documents-icon.png" style="height:40px;width:40px;" />
@@ -121,8 +121,8 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="~/Document/Create" class="nav-link">
-                                            <img src="https://icons.iconarchive.com/icons/pelfusion/flat-folder/256/Upload-Folder-icon.png" style="height:40px;width:40px;" />
+                                        <a href="~/Weather/Index" class="nav-link">
+                                            <img src="https://icons.iconarchive.com/icons/iconka/magic-weather/256/fog-icon.png" style="height:40px;width:40px;" />
                                             <p>View Forecast</p>
                                         </a>
                                     </li>
