@@ -36,7 +36,7 @@ namespace WeatherForecast.Service
             var _users = _context.Users.ToList();
             if (!string.IsNullOrEmpty(str))
             {
-                var searchedItems = _users.Where(x => x.UserEmail.Contains(str, StringComparison.OrdinalIgnoreCase) || x.UserRole.Contains(str, StringComparison.OrdinalIgnoreCase)).ToList();
+                var searchedItems = _users.Where(x => x.City.Contains(str, StringComparison.OrdinalIgnoreCase) || x.UserEmail.Contains(str, StringComparison.OrdinalIgnoreCase) || x.UserRole.Contains(str, StringComparison.OrdinalIgnoreCase)).ToList();
                 return searchedItems;
             }
             return _users;

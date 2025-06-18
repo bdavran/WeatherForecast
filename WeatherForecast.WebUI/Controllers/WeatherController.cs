@@ -14,7 +14,7 @@ public class WeatherController : Controller
     {
         if (string.IsNullOrEmpty(city))
         {
-            var identity = (ClaimsIdentity)User.Identity;
+            ClaimsIdentity identity = (ClaimsIdentity)User.Identity;
             city = identity.FindFirst("City")?.Value;
         }
 

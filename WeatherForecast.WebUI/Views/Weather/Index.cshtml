@@ -49,9 +49,12 @@
 
 @section Scripts {
     <script>
-        function initMap() {
-            var cityLocation = { lat: @Model.Latitude, lng: @Model.Longitude };
+        const latitude = @Html.Raw(Json.Serialize(Model.Latitude));
+        const longitude = @Html.Raw(Json.Serialize(Model.Longitude));
+        const city = @Html.Raw(Json.Serialize(Model.City));
 
+        function initMap() {
+            var cityLocation = { lat: latitude, lng: longitude };
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 10,
                 center: cityLocation
@@ -60,7 +63,7 @@
             var marker = new google.maps.Marker({
                 position: cityLocation,
                 map: map,
-                title: '@Model.City'
+                title: city
             });
         }
     </script>
